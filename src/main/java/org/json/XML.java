@@ -854,9 +854,6 @@ public class XML {
                     sb.append("/>");
                     if (indentFactor > 0) {
                         sb.append('\n');
-                        for (int i = 0; i < indentFactor - 1; i++) {
-                            sb.append(' ');
-                        }
                     }
 
                     // Emit a new tag <k>

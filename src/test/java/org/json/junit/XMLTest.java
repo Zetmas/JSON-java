@@ -1076,7 +1076,7 @@ public class XMLTest {
         String jsonString = "{\"root\":{\"str\":\"12345\"}}";
         JSONObject originalJson = new JSONObject(jsonString);
         String actualString = XML.toString(originalJson, null, config);
-        String expectedString = "";
+        String expectedString = "<root>\n <str>12345</str>\n </root>\n ";
         assertEquals(expectedString, actualString);
     }
 }
