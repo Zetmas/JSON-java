@@ -854,7 +854,7 @@ public class XML {
                     sb.append("/>");
                     if (indentFactor > 0) {
                         sb.append('\n');
-                        for (int i = 0; i < indentFactor; i++) {
+                        for (int i = 0; i < indentFactor - 1; i++) {
                             sb.append(' ');
                         }
                     }
@@ -863,6 +863,12 @@ public class XML {
 
                 } else {
                     sb.append(toString(value, key, config));
+                    if (indentFactor > 0) {
+                        sb.append('\n');
+                        for (int i = 0; i < indentFactor; i++) {
+                            sb.append(' ');
+                        }
+                    }
                 }
             }
             if (tagName != null) {
@@ -871,12 +877,6 @@ public class XML {
                 sb.append("</");
                 sb.append(tagName);
                 sb.append('>');
-                if (indentFactor > 0) {
-                    sb.append('\n');
-                    for (int i = 0; i < indentFactor; i++) {
-                        sb.append(' ');
-                    }
-                }
             }
             return sb.toString();
 
