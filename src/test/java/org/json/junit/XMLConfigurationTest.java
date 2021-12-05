@@ -1071,6 +1071,23 @@ public class XMLConfigurationTest {
 
         Util.compareActualVsExpectedJsonObjects(jsonObject, expetedJsonObject);
     }
+    @Test
+    public void testWithNewConstructor() {
+        // Should not throw Exception
+        new XMLParserConfiguration();
+    }
+    @Test
+    public void testWithIndentFactor() {
+        // Should not throw Exception
+        new XMLParserConfiguration().withIndentFactor(1);
+    }
+    @Test
+    public void testGetIndentFactor() {
+        XMLParserConfiguration config = 
+                new XMLParserConfiguration()
+                        .withIndentFactor(1);
+        assertEquals(config.getIndentFactor(), 1);
+    }
     
     /**
      * Convenience method, given an input string and expected result,

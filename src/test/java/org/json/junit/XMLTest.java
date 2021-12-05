@@ -1069,4 +1069,14 @@ public class XMLTest {
             fail("Expected to be unable to modify the config");
         } catch (Exception ignored) { }
     }
+    
+    @Test
+    public void testToStringWithIndentFactor() {
+        XMLParserConfiguration config = new XMLParserConfiguration().withIndentFactor(1);
+        String jsonString = "{\"root\":{\"str\":\"12345\"}}";
+        JSONObject originalJson = new JSONObject(jsonString);
+        String actualString = XML.toString(originalJson, null, config);
+        String expectedString = "<root>\n <str>12345</str>\n </root>\n ";
+        assertEquals(expectedString, actualString);
+    }
 }
