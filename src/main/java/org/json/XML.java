@@ -777,6 +777,7 @@ public class XML {
         JSONArray ja;
         JSONObject jo;
         String string;
+        int indentFactor = config.getIndentFactor();
 
         if (object instanceof JSONObject) {
 
@@ -785,6 +786,12 @@ public class XML {
                 sb.append('<');
                 sb.append(tagName);
                 sb.append('>');
+                if (indentFactor > 0) {
+                    sb.append('\n');
+                    for (int i = 0; i < indentFactor; i++) {
+                        sb.append(' ');
+                    }
+                }
             }
 
             // Loop thru the keys.
@@ -834,11 +841,23 @@ public class XML {
                         } else {
                             sb.append(toString(val, key, config));
                         }
+                        if (indentFactor > 0) {
+                            sb.append('\n');
+                            for (int j = 0; j < indentFactor; j++) {
+                                sb.append(' ');
+                            }
+                        }
                     }
                 } else if ("".equals(value)) {
                     sb.append('<');
                     sb.append(key);
                     sb.append("/>");
+                    if (indentFactor > 0) {
+                        sb.append('\n');
+                        for (int i = 0; i < indentFactor; i++) {
+                            sb.append(' ');
+                        }
+                    }
 
                     // Emit a new tag <k>
 
@@ -852,6 +871,12 @@ public class XML {
                 sb.append("</");
                 sb.append(tagName);
                 sb.append('>');
+                if (indentFactor > 0) {
+                    sb.append('\n');
+                    for (int i = 0; i < indentFactor; i++) {
+                        sb.append(' ');
+                    }
+                }
             }
             return sb.toString();
 
